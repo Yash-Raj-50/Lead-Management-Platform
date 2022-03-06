@@ -1,0 +1,59 @@
+{% extends 'login.html'%}
+{%block title%}Register | Cuvette
+{%endblock title%}
+
+{%block body%}
+
+
+<form method="post" action="/register" style="border: 1px solid #DFE0E0; box-sizing: border-box; border-radius: 10px; padding-left: 49px; padding-bottom: 63px; padding-right: 49px; padding-top: 63px;">
+  {% csrf_token %}
+  
+  <h1 class="h3 mb-3 fw-normal" style=" 
+      font-style: normal;
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 24px;
+      
+      /* identical to box height */
+      letter-spacing: -0.02em;
+      
+      color: #212529;"><B>Register to a new account</B></h1>
+
+
+  <div class="row">
+    <div class="col">
+      <input type="text" class="form-control" placeholder="First name" aria-label="First name" name="first_name" >
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" name="last_name">
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="Enter email address" class="form-label"></label>
+    <input type="text" class="form-control" id="Enter email address" placeholder="Enter email address" name="email">
+  </div>
+  <div class="mb-3">
+    <label for="Enter phone number" class="form-label"></label>
+    <input type="text" class="form-control" id="Enter phone number" placeholder="Enter phone number" name="phone_number">
+  </div>
+
+  <div class="mb-3">
+    <label for="inputPassword4" class="form-label"></label>
+    <input type="password" class="form-control" id="inputPassword4" placeholder="Enter Password" name="password">
+  </div>
+  
+  <div class="mb-3">
+    <label for="confirmPassword" class="form-label"></label>
+    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+  </div>
+
+  <button class="w-100 btn btn-lg btn-primary" type="submit" style="margin-top: 61px;">Register now</button>
+  <div
+    style="text-align: center; margin-top: 20px ;font-size: 16px;line-height: 160%; letter-spacing: -0.03em;color: #000000;">
+    Already have an account? <a href='login' style="text-decoration: none;"> Login now</a></div>
+</form>
+
+
+
+{%endblock body%}

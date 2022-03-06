@@ -88,75 +88,6 @@ top: 20.11%;
 bottom: 51.67%;
 }
 
-.img-character{
-    /* freepik--Character--inject-32 */
-
-position: absolute;
-left: 64.37%;
-right: 16.56%;
-top: 39.88%;
-bottom: 16.4%;
-}
-
-.img-charts{
-    /* freepik--Charts--inject-32 */
-
-position: absolute;
-left: 27.33%;
-right: 22.8%;
-top: 49.04%;
-bottom: 12.55%;
-}
-
-.img-spreadsheet{
-    /* freepik--Spreadsheets--inject-32 */
-
-position: absolute;
-left: 19.92%;
-right: 32.36%;
-top: 7.48%;
-bottom: 33.15%;
-}
-
-.img-device{
-    /* freepik--Device--inject-32 */
-
-position: absolute;
-left: 11.12%;
-right: 39.68%;
-top: 6.09%;
-bottom: 25.95%;
-}
-
-.img-clouds{
-    /* freepik--Clouds--inject-32 */
-
-position: absolute;
-left: 8.31%;
-right: 71.34%;
-top: 9.57%;
-bottom: 79.48%;
-}
-
-.img-shadows{
-    /* freepik--Shadows--inject-32 */
-
-position: absolute;
-left: 5.25%;
-right: 14.18%;
-top: 45.82%;
-bottom: 13.88%;
-}
-
-.img-floor{
-    /* freepik--Floor--inject-32 */
-
-position: absolute;
-left: 1.68%;
-right: 2.06%;
-top: 40.46%;
-bottom: 3.97%;
-}
 
 .login-image{
     /* Spreadsheets-amico 1 */
@@ -219,3 +150,24 @@ top: 471px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
+
+  .link_to_register {
+    /* New here? Register now */
+
+    position: absolute;
+    width: 160px;
+    height: 26px;
+    left: 1015px;
+    top: 618px;
+
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 160%;
+
+    /* identical to box height, or 26px */
+    letter-spacing: -0.03em;
+
+    color: #d82222;
+}
