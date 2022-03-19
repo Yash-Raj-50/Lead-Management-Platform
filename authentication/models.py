@@ -4,9 +4,18 @@ from typing_extensions import Self
 from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User, Group
-
 from numpy import True_
-# Create your models here.
+
+###
+Default_fk_id=1
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    Manager_is=models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Manage_id", related_name='Manager',default=Default_fk_id)
+    
+
+    def __str__(self):
+        return self.user.username
+
 
 class SiteUser(models.Model):
     id=models.IntegerField(auto, primary_key=True)

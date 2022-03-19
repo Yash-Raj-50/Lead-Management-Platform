@@ -131,3 +131,4 @@ STATICFILES_DIRS = [
 ]
 
 LOGOUT_REDIRECT_URL = '/login'
+AUTH_PROFILE_MODULE = "authentication.models.Profile"

@@ -1,12 +1,21 @@
+from dataclasses import Field
 from pickle import TRUE
+from attr import field
 from django.contrib import admin
+from django.forms import fields_for_model
 from platformdirs import user_log_dir
 from authentication.models import SiteUser, Lead
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User, Group
-from .models import Lead
+from .models import Lead 
 from django.contrib import messages
 from django.utils.translation import ngettext
+from .models import Profile
+
+
+admin.site.register(Profile)
+
+
 
 class UserAdmin(admin.ModelAdmin):
 
@@ -18,12 +27,16 @@ class UserAdmin(admin.ModelAdmin):
         messages.success(request, "Selected users were approved as Sales Representatives(Staff)")      
 
     exclude=('password','last_login','user_permissions',)
+    # Field=('Profile.manager',)
+    
     list_display = ('username','email', 'first_name', 'last_name','is_staff','is_superuser',)
     # list_filter = ('is_staff', 'is_superuser')
 
     
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
+
+
 
 class LeadA(admin.ModelAdmin): 
     # exclude=('user_id',)
