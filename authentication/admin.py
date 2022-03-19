@@ -7,13 +7,15 @@ from platformdirs import user_log_dir
 from authentication.models import SiteUser, Lead
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User, Group
-from .models import Lead 
+from .models import Lead, LeadManager 
 from django.contrib import messages
 from django.utils.translation import ngettext
 from .models import Profile
 
+class ProfileAdmin(admin.ModelAdmin):
+    exclude=('user',)
 
-admin.site.register(Profile)
+admin.site.register(Profile,ProfileAdmin,)
 
 
 
@@ -43,6 +45,9 @@ class LeadA(admin.ModelAdmin):
     list_display=('Name','email','phone_number','user_id','Status')
     list_filter=('Status',)
 
+    def get_queryset(self, request):
+        queryset = LeadManager.get_queryset(self, request)
+        return queryset
 
 
 admin.site.site_header= 'Leads Management Platform'
