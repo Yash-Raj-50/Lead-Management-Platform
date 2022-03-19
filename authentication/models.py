@@ -24,7 +24,7 @@ class LeadManager(models.Manager):
             query = Lead.objects.all()
         if request.user in User.objects.filter(groups__name__in=['Manager']):
             # reps= 
-            query = Lead.objects.all()
+            query = Lead.objects.filter(user_id= any(request.user.Manager.all()))
         return query
 
 class Lead(models.Model):

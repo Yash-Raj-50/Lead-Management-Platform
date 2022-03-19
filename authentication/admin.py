@@ -44,6 +44,7 @@ class LeadA(admin.ModelAdmin):
     # exclude=('user_id',)
     list_display=('Name','email','phone_number','user_id','Status')
     list_filter=('Status',)
+    list_per_page= 10
 
     def get_queryset(self, request):
         queryset = LeadManager.get_queryset(self, request)
