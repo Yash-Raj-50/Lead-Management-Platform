@@ -35,7 +35,7 @@ class Lead(models.Model):
     created_at=models.DateTimeField("date_created",default=datetime.now())
     Status=models.CharField(max_length = 50, choices=[('hot','hot'),('cold','cold'),('med','med'),('sold','sold')])
     user_id=models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Assigned to")
-    
+    remark = models.TextField()
     def __str__(self) -> str: 
         return self.Name
 

@@ -1,0 +1,66 @@
+{% extends "admin/base_site.html" %}
+
+{% block title %}Cuvette | Lead Management Platform{% endblock %}
+
+{% block branding %}    
+    
+{% endblock %}
+{% block breadcrumbs %}{% endblock %}
+
+{% block bodyclass %}bg-light{% endblock %}
+
+{% block extrastyle %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+      #header, .breadcrumbs { display: none; }
+
+      /* Bootstrap issues with admin */
+      * { box-sizing: unset; }
+      div.module caption { caption-side: top !important; }
+      .collapse { display: block !important; }
+    </style>
+{% endblock %}
+
+{% block bodyheader %}
+    <!-- <div class="bg-white container" style="width:100%;"> -->
+
+        <nav class="navbar navbar-light bg-light" >
+            <div class="container-fluid" >
+              <a class="navbar-brand" href="/admin">
+                <img src="/static/logo.png" style="width: 120px; height: 29.24px; left: 50px; top: 3px;" class="d-inline-block align-text-top">
+              </a>
+              <a role="button" class="btn btn-outline-danger" href="/logout">Logout</a>
+            </div>
+            
+
+          </nav>
+
+
+      <!-- {% comment %} <div class="jumbotron">{% endcomment %} -->
+        <!-- {% comment %} <h1 class="display-4">Hacking the Django Admin with Bootstrap</h1> {% endcomment %} -->
+        <!-- {% comment %} <p class="lead"> -->
+            <!-- <a ref="https://www.cuvette.tech/">Cuvette</a>  -->
+        <!-- </p>{% endcomment %} -->
+    
+    <!-- </div> -->
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+{% block bodyfooter %}
+    </div>
+    <script>
+     document.querySelectorAll('.field-remark').forEach((elem)=>{
+       elem.addEventListener('click',function(e){
+         e.preventDefault();
+         console.log(e.target)
+       })
+     })
+    </script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+{% endblock %}

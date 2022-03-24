@@ -60,3 +60,10 @@ def register(request):
         return redirect("/login")
         
     return render(request, "register.html") 
+
+def error_404_view(request, exception):
+    return render(request,'error_404.html')
+
+def logout_request(request):
+    logout(request)
+    return redirect("/login")

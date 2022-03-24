@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 from dataclasses import Field
 from pickle import TRUE
 from attr import field
@@ -11,6 +12,9 @@ from .models import Lead, LeadManager
 from django.contrib import messages
 from django.utils.translation import ngettext
 from .models import Profile
+from django.urls import reverse
+from django.utils.http import urlencode
+from django.utils.html import format_html
 
 class ProfileAdmin(admin.ModelAdmin):
     exclude=('user',)
@@ -42,14 +46,23 @@ admin.site.register(User, UserAdmin)
 
 class LeadA(admin.ModelAdmin): 
     # exclude=('user_id',)
-    list_display=('Name','email','phone_number','user_id','Status')
+    list_display=('Name','email','phone_number','user_id','Status','remark',)
     list_filter=('Status',)
     list_per_page= 10
-
+    list_editable=('Status',)
+    list_display_links=('remark',)
     def get_queryset(self, request):
         queryset = LeadManager.get_queryset(self, request)
         return queryset
 
+    def view_remarks(self, obj):
+        count = obj.person_set.count()
+        # url = (
+        #     reverse("admin:core_person_changelist")
+        #     + "?"
+        #     + urlencode({"courses__id": f"{obj.id}"})
+        # )
+        return format_html('<a> Students</a>',NULL, count)
 
 admin.site.site_header= 'Leads Management Platform'
 # admin.site.register(SiteUser, SiteUserAdmin)
