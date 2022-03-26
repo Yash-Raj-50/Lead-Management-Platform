@@ -14,9 +14,9 @@ from .models import Lead, LeadManager
 from django.contrib import messages
 from django.utils.translation import ngettext
 from .models import Profile
-from django.urls import reverse
-from django.utils.http import urlencode
-from django.utils.html import format_html
+# from django.urls import reverse
+# from django.utils.http import urlencode
+# from django.utils.html import format_html
 
 class ProfileAdmin(admin.ModelAdmin):
     exclude=('user',)
