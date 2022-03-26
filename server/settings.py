@@ -1,3 +1,5 @@
+import django_heroku
+
 """
 Django settings for server project.
 
@@ -25,7 +27,7 @@ SECRET_KEY = 'django-insecure-u0=9=9l8pvrm3c^-8!(u$yxcpi78an=9@aumd2tce6(e%d9no&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['lead-management-platform.herokuapp.com']
 
 
 # Application definition
@@ -43,6 +45,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -117,6 +120,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
+STATIC_ROOT= os.path.join(BASE_DIR, 'staticfiles')
+
 STATIC_URL = 'static/'
 ##add by me below 
 
@@ -139,3 +144,6 @@ STATICFILES_DIRS = [
 
 LOGOUT_REDIRECT_URL = '/login'
 AUTH_PROFILE_MODULE = "authentication.models.Profile"
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
