@@ -12,7 +12,7 @@ Default_fk_id=1
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     Manager_is=models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Manage_id", related_name='Manager',default=Default_fk_id)
-    
+    avatar = models.ImageField(upload_to='', default='profile.png')
 
     def __str__(self):
         return self.user.username
@@ -23,19 +23,20 @@ class LeadManager(models.Manager):
         if request.user.is_superuser:
             query = Lead.objects.all()
         if request.user in User.objects.filter(groups__name__in=['Manager']):
-            # reps= 
-            query = Lead.objects.filter(user_id= any(request.user.Manager.all()))
+            # query = Lead.objects.filter(user_id= any(User.objects.filter( Manager=request.user.user_id)))
+            query = Lead.objects.all()
         return query
 
 class Lead(models.Model):
-    id=models.IntegerField(auto, primary_key=True)
+    id=models.AutoField( primary_key=True)
     Name=models.CharField("Full Name",max_length=30)
     email=models.EmailField(max_length=50)
     phone_number=models.IntegerField()
     created_at=models.DateTimeField("date_created",default=datetime.now())
     Status=models.CharField(max_length = 50, choices=[('hot','hot'),('cold','cold'),('med','med'),('sold','sold')])
     user_id=models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Assigned to")
-    remark = models.TextField()
+    remark = models.TextField(default="Add+")
+    remarks_data=models.TextField(null=True)
     def __str__(self) -> str: 
         return self.Name
 

@@ -1,0 +1,1 @@
+set(Lead.objects.values_list('Status', flat=True))

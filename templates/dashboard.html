@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+</head>
+
+<body>
+
+    <nav class="navbar navbar-light bg-light" >
+        <div class="container-fluid" >
+            <a class="navbar-brand" href="/admin">
+            <img src="/static/logo.png" style="width: 120px; height: 29.24px; left: 50px; top: 3px;" class="d-inline-block align-text-top">
+            </a>  
+            <a role="button" class="btn btn-outline-danger" href="/logout">Logout</a>
+        </div>
+      </nav>
+    
+    <div style="height: 40%; width:40%;"><canvas id="myChart" height="300" width="400"></canvas></div>
+    <script>
+        {% block jquery %}
+        var endpoint = '/api/chart/data'
+        var defaultData=[]
+        var labels =[];
+        $.ajax({
+            method : "GET",
+            url: endpoint,
+            success: function(data){
+                labels = data.labels
+                defaultData = data.default
+                setChart()
+                // console.log(data)
+            },
+            error: function(data){
+                console.log("a error for you")
+            }
+        })
+        function setChart() {
+            const ctx = document.getElementById('myChart').getContext('2d');
+                const myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels ,
+                    datasets: [{
+                        label: 'Leads Status',
+                        data: defaultData,                        
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        }
+        
+        {% endblock %}
+    </script>
+
+    <div> {{data.no_total}}</div>
+ 
+
+   
+    <!-- <div class="col-md-6 my-4">
+        <div class="bg-white">
+            <div class="card-body">
+                <canvas id="myChart" width="400" height="300"></canvas>
+                <script>
+
+                    var a =[{% for lead in leads %} '{{lead.Status}}', {% endfor %}];
+                    let unique = [...new Set(a)];     
+
+                    var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            
+                            lables: unique,
+                    datasets: [{
+                        var dict = { 
+                            hot = 0,
+                            cold =0 ,
+                            new = 0,
+                            sold =0,
+                            none = 0,
+                        };
+                        // {% for lead in leads %}
+                            // dict['{{lead.Status}}''] += 1;
+                        // {% endfor %}
+                        for (x in lables) {
+                                dict[x] = dict[x] + 1;                              
+                            }
+                        }                       
+                        }
+                        label: 'Lead',
+                        data: [dict[0][1],dict.cold,dict.new,dict.sold,dict.none],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                                borderWidth: 1
+                    }]
+                        },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+     -->
+</body>
+</html>

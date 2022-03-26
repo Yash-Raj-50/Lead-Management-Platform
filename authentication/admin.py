@@ -1,3 +1,5 @@
+from django.forms import TextInput, Textarea
+from django.db import models
 from asyncio.windows_events import NULL
 from dataclasses import Field
 from pickle import TRUE
@@ -39,6 +41,18 @@ class UserAdmin(admin.ModelAdmin):
     # list_filter = ('is_staff', 'is_superuser')
 
     
+    fieldsets = (
+        (None, {
+            'fields': ('username', 'first_name', 'last_name','email',)
+        }),
+        ('Permissions', {
+            'fields': ('is_staff', 'is_superuser')
+        }),
+        ('Roles & Other',{
+            'fields':('groups','date_joined')
+        }),
+    )
+    
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 
@@ -49,11 +63,19 @@ class LeadA(admin.ModelAdmin):
     list_display=('Name','email','phone_number','user_id','Status','remark',)
     list_filter=('Status',)
     list_per_page= 10
-    list_editable=('Status',)
-    list_display_links=('remark',)
+    list_editable=('Status','remark')
+    formfield_overrides = {
+        models.TextField: {'widget': Textarea(attrs={'rows':1, 'cols':20})},
+    }
     def get_queryset(self, request):
         queryset = LeadManager.get_queryset(self, request)
         return queryset
+
+    def get_form(self, request, obj=None, **kwargs):
+        self.exclude = []
+        if  request.user in User.objects.filter(groups__name__in=['Representative']):
+            self.exclude.append('user_id') #here!
+        return super(LeadA, self).get_form(request, obj, **kwargs)
 
     def view_remarks(self, obj):
         count = obj.person_set.count()
@@ -64,6 +86,7 @@ class LeadA(admin.ModelAdmin):
         # )
         return format_html('<a> Students</a>',NULL, count)
 
+    
 admin.site.site_header= 'Leads Management Platform'
 # admin.site.register(SiteUser, SiteUserAdmin)
 admin.site.register(Lead,LeadA)

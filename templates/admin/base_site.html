@@ -29,12 +29,29 @@
               <a class="navbar-brand" href="/admin">
                 <img src="/static/logo.png" style="width: 120px; height: 29.24px; left: 50px; top: 3px;" class="d-inline-block align-text-top">
               </a>
-              <a role="button" class="btn btn-outline-danger" href="/logout">Logout</a>
+              {% if request.user.is_superuser %}
+              <a href="/dashboard" class="ml-auto" style="margin-right:20px;"><button  type="button" class="btn btn-outline-primary">Analysis</button></a>
+              {% endif %}  
+                <a role="button" class="btn btn-outline-danger" href="/logout">Logout</a>
             </div>
             
 
           </nav>
 
+          <div class="card mb-3" style=" width: 90%; margin-left: 5%;">
+            <div class="row g-0" style="flex-wrap: nowrap;">
+              <div class="col-md-4" style="max-width: 10% ;">
+                <!-- <img src="/static/mediaImages/profile.png" class="img-fluid rounded-start" alt="..." style="width: 64px; height: 64px; margin: 4px;margin-left: 40px;"> -->
+                <img src="{{request.user.profile.avatar.url}}" class="img-fluid rounded-start" alt="..." style="width: 64px; height: 64px; margin: 4px;margin-left: 40px;">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <p class="card-text">Good Morning, Welcome <b>{{ request.user.username }}</b></p>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
 
       <!-- {% comment %} <div class="jumbotron">{% endcomment %} -->
         <!-- {% comment %} <h1 class="display-4">Hacking the Django Admin with Bootstrap</h1> {% endcomment %} -->
@@ -51,13 +68,69 @@
 
 {% block bodyfooter %}
     </div>
-    <script>
-     document.querySelectorAll('.field-remark').forEach((elem)=>{
-       elem.addEventListener('click',function(e){
-         e.preventDefault();
-         console.log(e.target)
-       })
-     })
+    <script defer>
+//      document.querySelectorAll('.field-remark').forEach((elem)=>{
+//        elem.addEventListener('click',function(e){
+//          e.preventDefault();
+//          document.getElementsByTagName('body')[0].innerHTML=`<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+//   <div class="modal-dialog">
+//     <div class="modal-content">
+//       <div class="modal-header">
+//         <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+//         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+//       </div>
+//       <div class="modal-body">
+//         <form>
+//           <div class="mb-3">
+//             <label for="recipient-name" class="col-form-label">Recipient:</label>
+//             <input type="text" class="form-control" id="recipient-name">
+//           </div>
+//           <div class="mb-3">
+//             <label for="message-text" class="col-form-label">Message:</label>
+//             <textarea class="form-control" id="message-text"></textarea>
+//           </div>
+//         </form>
+//       </div>
+//       <div class="modal-footer">
+//         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+//         <button type="button" class="btn btn-primary">Send message</button>
+//       </div>
+//     </div>
+//   </div>
+// </div>
+// `
+// document.querySelector('.modal').style.display='block'
+//        })
+//      })
+
+// document.querySelectorAll('.field-remark').forEach((elem)=>{
+//   elem.innerHTML=`<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+//   Add+
+// </button>`;
+// })
+
+// document.getElementById('container').innerHTML+=`<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+//   Launch demo modal
+// </button>
+
+// <!-- Modal -->
+// <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+//   <div class="modal-dialog">
+//     <div class="modal-content">
+//       <div class="modal-header">
+//         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+//         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+//       </div>
+//       <div class="modal-body">
+//         ...
+//       </div>
+//       <div class="modal-footer">
+//         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+//         <button type="button" class="btn btn-primary">Save changes</button>
+//       </div>
+//     </div>
+//   </div>
+// </div>`;
     </script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
