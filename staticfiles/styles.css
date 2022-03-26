@@ -1,0 +1,173 @@
+.logo {
+    position: absolute;
+    width: 120px;
+    height: 29.24px;
+    left: 50px;
+    top: 28px;
+}
+
+/* Rectangle 197 */
+.rectangle_197 {
+
+    position: absolute;
+    width: 1px;
+    height: 1440px;
+    left: 0px;
+    top: 87px;
+    
+    background: #EBF0F5;
+    transform: rotate(-90deg);
+}
+
+.login_text_1 {
+    /* Welcome to your Dashboard */
+
+    position: absolute;
+    left: 8.26%;
+    /* right: 65.76%; */
+    top: 181px;
+    bottom: 66.11%;
+    
+    /* font-family: DM Sans; */
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 62px;
+    letter-spacing: -0.03em;
+    
+    /* primary text */
+    color: #1E272E;
+    
+    
+}
+
+.login_text_2{
+    /* This is the homepage of lead management system, login now to begin */
+
+    position: absolute;
+    left: 8.26%;
+    /* right: 57.01%; */
+    top: 345px;
+    bottom: 51.67%;
+    
+    /* font-family: DM Sans; */
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 160%;
+    
+    /* or 45px */
+    letter-spacing: -0.03em;
+    
+    /* secondary text */
+    color: #566474;
+    
+    margin-top: 40px;
+    margin-bottom: 36px;
+}
+
+.rectangle_196 {
+    /* Rectangle 196 */
+
+position: absolute;
+left: 0px;
+right: 723px;
+top: 87px;
+bottom: 0.11%;
+
+background: rgba(247, 248, 250, 0.5);
+/* transform: matrix(-1, 0, 0, 1, 0, 0); */
+}
+
+.login_text_box {
+    
+position: absolute;
+left: 8.26%;
+right: 57.01%;
+top: 20.11%;
+bottom: 51.67%;
+}
+
+
+.login-image{
+    /* Spreadsheets-amico 1 */
+
+position: absolute;
+width: 510px;
+height: 510px;
+left: 119px;
+top: 471px;
+
+}
+
+/* signin css after this comment */
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+
+  .form-signin {
+    /* width: 100%; */
+    /* max-width: 330px; */
+    /* padding: 15px; */
+    /* margin: auto; */
+
+    /* manually added */
+    position: absolute;
+    left: 58.06%;
+    right: 7.36%;
+    top: 32.33%;
+    bottom: 22.78%;    
+
+  }
+  
+  .form-signin .checkbox {
+    font-weight: 400;
+  }
+  
+  .form-signin .form-floating:focus-within {
+    z-index: 2;
+  }
+  /* ##### */
+  
+  .form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  
+  .form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  .link_to_register {
+    /* New here? Register now */
+
+    position: absolute;
+    width: 160px;
+    height: 26px;
+    left: 1015px;
+    top: 618px;
+
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 160%;
+
+    /* identical to box height, or 26px */
+    letter-spacing: -0.03em;
+
+    color: #d82222;
+}

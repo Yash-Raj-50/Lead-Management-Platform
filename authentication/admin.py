@@ -1,6 +1,6 @@
 from django.forms import TextInput, Textarea
 from django.db import models
-from asyncio.windows_events import NULL
+# from asyncio.windows_events import NULL
 from dataclasses import Field
 from pickle import TRUE
 from attr import field
@@ -77,14 +77,14 @@ class LeadA(admin.ModelAdmin):
             self.exclude.append('user_id') #here!
         return super(LeadA, self).get_form(request, obj, **kwargs)
 
-    def view_remarks(self, obj):
-        count = obj.person_set.count()
-        # url = (
-        #     reverse("admin:core_person_changelist")
-        #     + "?"
-        #     + urlencode({"courses__id": f"{obj.id}"})
-        # )
-        return format_html('<a> Students</a>',NULL, count)
+    # def view_remarks(self, obj):
+    #     count = obj.person_set.count()
+    #     # url = (
+    #     #     reverse("admin:core_person_changelist")
+    #     #     + "?"
+    #     #     + urlencode({"courses__id": f"{obj.id}"})
+    #     # )
+    #     return format_html('<a> Students</a>',NULL, count)
 
     
 admin.site.site_header= 'Leads Management Platform'
