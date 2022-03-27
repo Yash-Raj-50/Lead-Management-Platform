@@ -122,11 +122,11 @@ USE_TZ = True
 
 STATIC_ROOT= os.path.join(BASE_DIR, 'staticfiles')
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 ##add by me below 
 
-MEDIA_URL = '/static/mediaImages/' # Public URL at the browser
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/mediaImages') # Directory where uploaded media is saved.
+MEDIA_URL = '/media/mediaImages/' # Public URL at the browser
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/mediaImages') # Directory where uploaded media is saved.
 
 
 
