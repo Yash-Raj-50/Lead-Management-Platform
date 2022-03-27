@@ -56,8 +56,8 @@ def register(request):
         user.set_password(password)
         user.first_name= First_name
         user.last_name= Last_name
-        my_group = Group.objects.get(name='Representative') 
-        my_group.user_set.add(user)
+        # my_group = Group.objects.get(name='Representative') 
+        # my_group.user_set.add(user)
         user.save()
 
         return redirect("/login")

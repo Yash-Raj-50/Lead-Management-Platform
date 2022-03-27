@@ -22,9 +22,9 @@ class LeadManager(models.Manager):
         query= Lead.objects.filter(user_id=request.user)
         if request.user.is_superuser:
             query = Lead.objects.all()
-        if request.user in User.objects.filter(groups__name__in=['Manager']):
+        # if request.user in User.objects.filter(groups__name__in=['Manager']):
             # query = Lead.objects.filter(user_id= any(User.objects.filter( Manager=request.user.user_id)))
-            query = Lead.objects.all()
+            # query = Lead.objects.all()
         return query
 
 class Lead(models.Model):
