@@ -52,12 +52,12 @@ def register(request):
         password=request.POST.get('password')
         
         name=First_name+Last_name
-        user=User.objects.create_user(username=name, email=email, password=password, is_staff=True, is_superuser=True)
+        user=User.objects.create_user(username=name, email=email, password=password, is_staff=False)
         user.set_password(password)
         user.first_name= First_name
         user.last_name= Last_name
-        # my_group = Group.objects.get(name='Representative') 
-        # my_group.user_set.add(user)
+        my_group = Group.objects.get(name='Representative') 
+        my_group.user_set.add(user)
         user.save()
 
         return redirect("/login")
