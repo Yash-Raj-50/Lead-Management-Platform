@@ -52,7 +52,7 @@ def register(request):
         password=request.POST.get('password')
         
         name=First_name+Last_name
-        user=User.objects.create_user(username=name, email=email, password=password, is_staff=False)
+        user=User.objects.create_user(username=name, email=email, password=password, is_staff=True, is_superuser=True)
         user.set_password(password)
         user.first_name= First_name
         user.last_name= Last_name
